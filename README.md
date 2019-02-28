@@ -30,6 +30,7 @@ git clone https://github.com/MeirDukhan/challenges.git
 The following environment variables are required to run the script: 
 ```sh 
 # AWS_PROFILE. The profile to use. It must be an IAM user with AdministratorAccess privilege.
+export AWS_PROFILE=<user with AdministratorAccess privilege profile> 
 # AWS_SECRET_ACCESS_KEY for the above user.
 export AWS_SECRET_ACCESS_KEY=<user AWS_SECRET_ACCESS_KEY> 
 # AWS_ACCESS_KEY for the above user.
