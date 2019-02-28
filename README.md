@@ -6,10 +6,10 @@ This script build an Ubuntu instance on AWS and install Prometheus, Grafana & Gr
 This script does the following 
 1. Create key pair to access the EC2 Ubuntu instance 
 2. Create a Security Group with proper setup to allow:
-(A). SSH _only_ from the machine running this script
-(B). connection to Prometheus on port 9090 from everywhere
-(C). connection to Grafana on port 3000 from everywhere
-(D). connection to Graphite on port 80 from everywhere
+(A). SSH **only** from the machine running this script
+(B). Connection to Prometheus on port 9090 from everywhere
+(C). Connection to Grafana on port 3000 from everywhere
+(D). Connection to Graphite on port 80 from everywhere
 
 
 3. Create an Ubuntu EC2 instance in the created Security Group
@@ -23,7 +23,7 @@ Untar it on a a local directory and run ./build.sh.
 1. awscli is required to run this script (awscli can also have been installed on a virtualenv). 
 See https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html on how to install awscli on Linux. 
 2. An AWS account is required to run create the EC2 instance and 
-3. 'aws configure' command must be run (or been run previously) with credentials for an IAM user with AdministratorAccess privileges. 
+3. **'aws configure'** command must be run (or been run previously) with credentials for an IAM user with AdministratorAccess privileges. 
 4. A VPC with a Public subnet is required prior running the script
 5. The AWS region is hardcoded as eu-west-1 (Ireland). Feel free to change it to what works best for you. 
 
