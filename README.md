@@ -1,10 +1,15 @@
 # Challenge
 
-This script to build an Ubuntu instance on AWS and install Prometheus, Grafana & Graphite. 
+This script build an Ubuntu instance on AWS and install Prometheus, Grafana & Graphite. 
+
 ### Description 
-This script does: 
-1. Create key pair
-2. Create a Security Group with proper setup to allow connection to Prometheus, Grafana & Graphite. 
+This script does the following 
+1. Create key pair to access the EC2 Ubuntu instance 
+2. Create a Security Group with proper setup to allow:
+a. connection to Prometheus on port 9090 
+b. connection to Grafana on port 3000 
+c. connection to Graphite on port 80
+d. SSH from the machine running this script
 3. Create an EC2 instance in the created Security Group
 4. Output the Public IP Address of the EC2 Ubuntu instance created and 
 5. SCP the tar.gz file with a deploy script to install Prometheus, Grafana & Graphite. 
@@ -26,7 +31,7 @@ cd ~
 git clone https://github.com/MeirDukhan/challenges.git
 ```
 
-#### Executing Program
+#### Executing the build script
 
 The following environment variables are required to run the script: 
 ```sh 
