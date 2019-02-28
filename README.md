@@ -14,9 +14,9 @@ This script does the following
 
 3. Create an Ubuntu EC2 instance in the created Security Group
 4. Output the Public IP Address of the EC2 Ubuntu instance created and 
-5. SCP the tar.gz file with a deploy script to install Prometheus, Grafana & Graphite. 
+5. SCP the tar.gz file to the EC2 created instance. 
+This tar.gz file contain a deploy script to install Prometheus, Grafana & Graphite. 
 
-Untar it on a a local directory and run ./build.sh. 
 
 ### Getting Started 
 ##### Dependencies and Assumptions
