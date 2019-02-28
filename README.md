@@ -22,7 +22,7 @@ See https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html on how t
 ##### Installing 
 ```sh
 mkdir ~/tmp/
-git clone <kaltura-challenge.git Path> 
+git clone https://github.com/MeirDukhan/challenges.git
 ```
 
 #### Executing Program
@@ -40,10 +40,11 @@ export VPC_ID=<your vpc-id>
 # SUBNET_ID – a public subnet-id
 export SUBNET_ID=<your public-subnet-id>
 
-cd ~/tmp/
+cd ~/tmp/challenges
 ./build.sh 
 ssh -i ~/.ssh/challenge-keypair.pem ubuntu@<ip-of-instance> 
 tar xvf 
+./deploy.sh 
 ```
 
 License
