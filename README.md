@@ -17,6 +17,7 @@ Untar it on a a local directory and run ./build.sh.
 See https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html on how to install awscli on Linux. 
 2. An AWS account is required to run create the EC2 instance
 3. A VPC with a Public subnet is required prior running the script
+3. The AWS region is hardcoded as eu-west-1 (Ireland). Feel free to change it to what works best for you. 
 
 ##### Installing 
 ```sh
