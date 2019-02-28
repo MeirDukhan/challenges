@@ -33,13 +33,13 @@ fi
 if [ -z $AWS_SECRET_ACCESS_KEY ] ; then 
     echo "AWS_SECRET_ACCESS_KEY is empty." 
     echo "export AWS_SECRET_ACCESS_KEY=<your AWS_SECRET_ACCESS_KEY>." 
-    exit 2 
+    #exit 2 
 fi 
 
 if [ -z $AWS_ACCESS_KEY ] ; then 
     echo "AWS_ACCESS_KEY is empty." 
     echo "export AWS_ACCESS_KEY=<your AWS_ACCESS_KEY>." 
-    exit 3 
+    #exit 3 
 fi 
 
 if [[ -z $VPC_ID || -z $SUBNET_ID ]] ; then 
@@ -59,28 +59,28 @@ SG_ID=$(aws ec2 create-security-group --description "Challenge SG" --group-name 
 
 MY_IP=$(curl ipinfo.io/ip) 
 # Inboud rules: allow SSH from my ip address, HTTPD (Graphite), Prometheus & Grafana, 80, 9090 & 3000 resp.
-aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 22 --cidr $MY_IP/32 
-aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 80 --cidr 0.0.0.0/0 
-aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 9090 --cidr 0.0.0.0/0 
-aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 3000 --cidr 0.0.0.0/0 
+aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 22 --cidr $MY_IP/32 --region $REGION
+aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 80 --cidr 0.0.0.0/0 --region $REGION
+aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 9090 --cidr 0.0.0.0/0 --region $REGION
+aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 3000 --cidr 0.0.0.0/0 --region $REGION
 
 # Outbound rules: HTTP HTTPS 
 # Remove the allow-all egress rule 
-aws ec2 revoke-security-group-egress --group-id $SG_ID --protocol all --port all --cidr 0.0.0.0/0 
+aws ec2 revoke-security-group-egress --group-id $SG_ID --protocol all --port all --cidr 0.0.0.0/0 --region $REGION
 
 # Allow HTTP & HTTPS
-aws ec2 authorize-security-group-egress --group-id $SG_ID --protocol tcp --port 80 --cidr 0.0.0.0/0 
-aws ec2 authorize-security-group-egress --group-id $SG_ID --protocol tcp --port 443 --cidr 0.0.0.0/0 
+aws ec2 authorize-security-group-egress --group-id $SG_ID --protocol tcp --port 80 --cidr 0.0.0.0/0 --region $REGION
+aws ec2 authorize-security-group-egress --group-id $SG_ID --protocol tcp --port 443 --cidr 0.0.0.0/0 --region $REGION
 
 # Step 3: Create an EC2 instance in the created Security Group 
-aws ec2 run-instances --image-id $IMAGE_ID --security-group-ids $SG_ID --subnet-id $SUBNET_ID --instance-type $INSTANCE_TYPE --associate-public-ip-address --key-name $KEYPAIR_NAME --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=cli-generated}]' > run-instances.json 
+aws ec2 run-instances --image-id $IMAGE_ID --security-group-ids $SG_ID --subnet-id $SUBNET_ID --instance-type $INSTANCE_TYPE --associate-public-ip-address --key-name $KEYPAIR_NAME --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=cli-generated}]' --region $REGION > run-instances.json 
 
 # Step 4: Wait 90 sec to get the instance up & running, so we can fetch its public IP address
 sleep 90
 instance_id=$(grep InstanceId  run-instances.json | awk '{print $2}' | sed -e 's/"//g' -e 's/,//g') 
 
 # Fetch public IP address of launched instance
-PublicIP=$(aws ec2 describe-instances --instance-ids $instance_id | grep PublicIpAddress | awk '{print $2}' | sed -e 's/"//g' -e 's/,//g') 
+PublicIP=$(aws ec2 describe-instances --instance-ids $instance_id --region $REGION | grep PublicIpAddress | awk '{print $2}' | sed -e 's/"//g' -e 's/,//g') 
 
 #echo "Connect to http://$PublicIP:9090 for Prometheus" 
 #echo "Connect to http://$PublicIP:3000 for Grafana" 
@@ -92,7 +92,7 @@ scp -i ~/.ssh/$KEYPAIR_NAME.pem -o StrictHostKeyChecking=no Challenge.tar.gz ubu
 echo "Connect to your AWS console. Go to EC2 instance. Get the plublic IP address." 
 echo "Then login via: ssh -i ~/.ssh/$KEYPAIR_NAME.pem ubuntu@$PublicIP" 
 echo "When logged in, run: " 
-echo "\t\t tar xvf Challenge.tar.gz" 
-echo "\t\t ./deploy.sh" 
+echo -e "\t\t tar xvf Challenge.tar.gz" 
+echo -e "\t\t ./deploy.sh" 
 
 
