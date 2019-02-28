@@ -15,32 +15,27 @@ IMAGE_ID='ami-09f0b8b3e41191524'
 INSTANCE_TYPE='t2.micro'
 
 
-function usage() { 
-  echo "Hello" 
-  exit 255
-} 
+#echo '$AWS_PROFILE= ' $AWS_PROFILE
+#echo '$AWS_SECRET_ACCESS_KEY = ' $AWS_SECRET_ACCESS_KEY
+#echo '$AWS_ACCESS_KEY = ' $AWS_ACCESS_KEY
 
-echo '$AWS_PROFILE= ' $AWS_PROFILE
-echo '$AWS_SECRET_ACCESS_KEY = ' $AWS_SECRET_ACCESS_KEY
-echo '$AWS_ACCESS_KEY = ' $AWS_ACCESS_KEY
+#if [ -z $AWS_PROFILE ] ; then 
+#    echo "AWS_PROFILE is empty. Please provide a profile with IAM AdministratorAccess privileges. " 
+#    echo "export AWS_PROFILE=<your AWS_PROFILE>." 
+#    #exit 1 
+#fi 
 
-if [ -z $AWS_PROFILE ] ; then 
-    echo "AWS_PROFILE is empty. Please provide a profile with IAM AdministratorAccess privileges. " 
-    echo "export AWS_PROFILE=<your AWS_PROFILE>." 
-    #exit 1 
-fi 
+#if [ -z $AWS_SECRET_ACCESS_KEY ] ; then 
+#    echo "AWS_SECRET_ACCESS_KEY is empty." 
+#    echo "export AWS_SECRET_ACCESS_KEY=<your AWS_SECRET_ACCESS_KEY>." 
+#    #exit 2 
+#fi 
 
-if [ -z $AWS_SECRET_ACCESS_KEY ] ; then 
-    echo "AWS_SECRET_ACCESS_KEY is empty." 
-    echo "export AWS_SECRET_ACCESS_KEY=<your AWS_SECRET_ACCESS_KEY>." 
-    #exit 2 
-fi 
-
-if [ -z $AWS_ACCESS_KEY ] ; then 
-    echo "AWS_ACCESS_KEY is empty." 
-    echo "export AWS_ACCESS_KEY=<your AWS_ACCESS_KEY>." 
-    #exit 3 
-fi 
+#if [ -z $AWS_ACCESS_KEY ] ; then 
+#    echo "AWS_ACCESS_KEY is empty." 
+#    echo "export AWS_ACCESS_KEY=<your AWS_ACCESS_KEY>." 
+#    #exit 3 
+#fi 
 
 if [[ -z $VPC_ID || -z $SUBNET_ID ]] ; then 
     echo "Either VPC_ID or SUBNET_ID is empty. Please provide both. Thanks" 
