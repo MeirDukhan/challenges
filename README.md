@@ -1,4 +1,4 @@
-# Kaltura Challenge
+# Challenge
 
 This script to build an Ubuntu instance on AWS and install Prometheus, Grafana & Graphite. 
 ### Description 
