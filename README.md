@@ -20,12 +20,12 @@ Untar it on a a local directory and run ./build.sh.
 
 ### Getting Started 
 ##### Dependencies and Assumptions
-1. awscli is required to run this script (awscli can also have been installed on a virtualenv). 
+1. **awscli** is required to run this script (awscli can also have been installed on a virtualenv). 
 See https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html on how to install awscli on Linux. 
 2. An AWS account is required to run create the EC2 instance and 
-3. **'aws configure'** command must be run (or been run previously) with credentials for an IAM user with AdministratorAccess privileges. 
-4. A VPC with a Public subnet is required prior running the script
-5. The AWS region is hardcoded as eu-west-1 (Ireland). Feel free to change it to what works best for you. 
+3. **'aws configure'** command must be run (or been run previously) with credentials for an IAM user with **AdministratorAccess** privileges. 
+4. **A VPC with a Public subnet** is required prior running the script
+5. The AWS region is hardcoded as **eu-west-1** (Ireland). Feel free to change it to what works best for you. 
 
 ##### Installing 
 ```sh
