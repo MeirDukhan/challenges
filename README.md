@@ -6,10 +6,10 @@ This script build an Ubuntu instance on AWS and install Prometheus, Grafana & Gr
 This script does the following 
 1. Create key pair to access the EC2 Ubuntu instance 
 2. Create a Security Group with proper setup to allow:
- - SSH **only** from the machine running this script
- - Connection to Prometheus on port 9090 from everywhere
- - Connection to Grafana on port 3000 from everywhere
- - Connection to Graphite on port 80 from everywhere
+  - SSH **only** from the machine running this script
+  - Connection to Prometheus on port 9090 from everywhere
+  - Connection to Grafana on port 3000 from everywhere
+  - Connection to Graphite on port 80 from everywhere
 
 
 3. Create an Ubuntu EC2 instance in the created Security Group
