@@ -33,14 +33,16 @@ The following environment variables are required to run the script:
 # Assuming there is an already existing public subnet (i.e. a subnet with access to Internet)
 # VPC_ID – a VPC with a public subnet-id 
 export VPC_ID=<your vpc-id>
+
 # SUBNET_ID – a public subnet-id
 export SUBNET_ID=<your public-subnet-id>
 
 cd ~/challenges
 ./build.sh 
 ssh -i ~/.ssh/challenge-keypair.pem ubuntu@<ip-of-instance> 
-tar xvf 
+tar xvf Challenge.tar.gz
 ./deploy.sh 
+
 ```
 
 License
