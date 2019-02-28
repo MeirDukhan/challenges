@@ -42,6 +42,8 @@ export SUBNET_ID=<your public-subnet-id>
 
 cd ~/tmp/
 ./build.sh 
+ssh -i ~/.ssh/challenge-keypair.pem ubuntu@<ip-of-instance> 
+tar xvf 
 ```
 
 License
