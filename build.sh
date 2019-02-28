@@ -1,7 +1,9 @@
 #!/bin/sh 
 
-# Get aws cli environment -- REMOVE the following line if awscli is available on your machine (outside a virtualenv) 
-. ~/venv_aws/bin/activate 
+# Get aws cli environment 
+if [ ! -x /bin/aws ] ; then 
+   . ~/venv_aws/bin/activate 
+fi 
 
 # Global variables
 REGION='eu-west-1' 
