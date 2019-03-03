@@ -17,6 +17,9 @@ This script does the following
 5. SCP the tar.gz file to the EC2 created instance. 
 This tar.gz file contain a deploy script to install Prometheus, Grafana & Graphite. 
 
+The initial challenge was to setup Grafana so it includes a dashboard that displays the memory, CPU and disk usage of the VM.
+However, I was unable to add a Prometheus datastore, so that in fact, Grafana is not doing very useful stuff... 
+I suspect the Grafana version I choose but it has to be clarified. 
 
 ### Getting Started 
 ##### Dependencies and Assumptions
