@@ -12,7 +12,7 @@ This script does the following
   - Connection to Grafana on port 3000 from everywhere
   - Connection to Graphite on port 80 from everywhere
 
-3. Create an Ubuntu EC2 instance in the created Security Group
+3. Create a t2.micro Ubuntu E2 instance in the created Security Group
 4. Output the Public IP Address of the EC2 Ubuntu instance created and 
 5. SCP the tar.gz file to the EC2 created instance. 
 This tar.gz file contain a deploy script to install Prometheus, Grafana & Graphite. 
